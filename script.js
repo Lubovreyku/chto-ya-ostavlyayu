@@ -2,15 +2,15 @@
 // 7 ответов, одна "рубашка". Без библиотек.
 
 const FRONT_IMAGES = [
-  "images/card1.png",
-  "images/card2.png",
-  "images/card3.png",
-  "images/card4.png",
-  "images/card5.png",
-  "images/card6.png",
-  "images/card7.png"
+  "card1.png",
+  "card2.png",
+  "card3.png",
+  "card4.png",
+  "card5.png",
+  "card6.png",
+  "card7.png"
 ];
-const BACK_IMAGE = "images/back.png";
+const BACK_IMAGE = "back.png";
 
 const grid = document.getElementById("cardsGrid");
 const btnReset = document.getElementById("btnReset");
