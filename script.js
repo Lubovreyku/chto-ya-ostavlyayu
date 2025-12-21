@@ -1,35 +1,35 @@
 const cardsData = [
   {
-    img: "imagescard1.png",
+    img: "images/card1.png",
     text: "Ты оставляешь бег.\nПришло время покоя."
   },
   {
-    img: "imagescard2.png",
+    img: "images/card2.png",
     text: "Ты больше не обязана быть прежней.\nВсё, что отжило — можно оставить."
   },
   {
-    img: "imagescard3.png",
+    img: "images/card3.png",
     text: "Страхи не идут с тобой дальше.\nСвет уже рядом.\nПозволь себе увидеть его."
   },
   {
-    img: "imagescard4.png",
+    img: "images/card4.png",
     text: "Ты отпускаешь то, что ранило.\nСердце выбирает мягкость и покой."
   },
   {
-    img: "imagescard5.png",
+    img: "images/card5.png",
     text: "Ты оставляешь вину.\nТы достаточно хороша уже сейчас."
   },
   {
-    img: "imagescard6.png",
+    img: "images/card6.png",
     text: "Ты отпускаешь тревогу о завтрашнем дне.\nОпора внутри тебя."
   },
   {
-    img: "imagescard7.png",
+    img: "images/card7.png",
     text: "Ты оставляешь сомнения в себе.\nТвоя сила с тобой."
   }
 ];
 
-const BACK_IMG = "imagesback.png";
+const BACK_IMG = "images/back.png";
 
 const grid = document.getElementById("grid");
 const resetBtn = document.getElementById("resetBtn");
