@@ -1,71 +1,120 @@
-// Карты "Что я оставляю в уходящем году"
-// 7 ответов, одна "рубашка". Без библиотек.
-
-const FRONT_IMAGES = [
-  "card1.png",
-  "card2.png",
-  "card3.png",
-  "card4.png",
-  "card5.png",
-  "card6.png",
-  "card7.png"
+const cardsData = [
+  {
+    img: "images/card1.png",
+    text: "Ты оставляешь бег.\nПришло время покоя."
+  },
+  {
+    img: "images/card2.png",
+    text: "Ты больше не обязана быть прежней.\nВсё, что отжило — можно оставить."
+  },
+  {
+    img: "images/card3.png",
+    text: "Страхи не идут с тобой дальше.\nСвет уже рядом.\nПозволь себе увидеть его."
+  },
+  {
+    img: "images/card4.png",
+    text: "Ты отпускаешь то, что ранило.\nСердце выбирает мягкость и покой."
+  },
+  {
+    img: "images/card5.png",
+    text: "Ты оставляешь вину.\nТы достаточно хороша уже сейчас."
+  },
+  {
+    img: "images/card6.png",
+    text: "Ты отпускаешь тревогу о завтрашнем дне.\nОпора внутри тебя."
+  },
+  {
+    img: "images/card7.png",
+    text: "Ты оставляешь сомнения в себе.\nТвоя сила с тобой."
+  }
 ];
-const BACK_IMAGE = "back.png";
 
-const grid = document.getElementById("cardsGrid");
-const btnReset = document.getElementById("btnReset");
+const BACK_IMG = "images/back.png";
+
+const grid = document.getElementById("grid");
+const resetBtn = document.getElementById("resetBtn");
+const result = document.getElementById("result");
+const resultText = document.getElementById("resultText");
+const copyBtn = document.getElementById("copyBtn");
 
 let locked = false;
 
-function shuffle(arr) {
-  const a = arr.slice();
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
+function shuffle(arr){
+  const a = [...arr];
+  for(let i=a.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
     [a[i], a[j]] = [a[j], a[i]];
   }
   return a;
 }
 
-function createCard(frontSrc, idx) {
-  const btn = document.createElement("button");
-  btn.type = "button";
-  btn.className = "card";
-  btn.setAttribute("aria-label", "Карта " + (idx + 1));
+function makeCard({img, text}, index){
+  const card = document.createElement("div");
+  card.className = "card";
+  card.dataset.index = String(index);
 
-  btn.innerHTML = `
+  card.innerHTML = `
     <div class="card-inner">
-      <img class="card-face card-back" src="${BACK_IMAGE}" alt="Рубашка карты" loading="lazy" />
-      <img class="card-face card-front" src="${frontSrc}" alt="Послание" loading="lazy" />
+      <div class="card-face card-back">
+        <img src="${BACK_IMG}" alt="Рубашка карты">
+      </div>
+      <div class="card-face card-front">
+        <img src="${img}" alt="Карта">
+      </div>
     </div>
   `;
 
-  btn.addEventListener("click", () => {
-    if (locked || btn.classList.contains("is-flipped")) return;
-
-    btn.classList.add("is-flipped");
-
-    // Блокируем остальные (эффект выбора одной карты)
+  card.addEventListener("click", () => {
+    if(locked) return;
     locked = true;
-    [...grid.querySelectorAll(".card")].forEach((c) => {
-      if (c !== btn) c.disabled = true;
+
+    card.classList.add("is-flipped");
+    showResult(text);
+
+    // остальные карты блокируем, чтобы не было повторных кликов
+    document.querySelectorAll(".card").forEach(c => {
+      if(c !== card) c.classList.add("disabled");
     });
+
+    // небольшой скролл к результату (приятно на мобильном)
+    setTimeout(() => {
+      result.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 250);
   });
 
-  return btn;
+  return card;
 }
 
-function render() {
+function showResult(text){
+  resultText.textContent = text;
+  result.classList.remove("hidden");
+}
+
+function reset(){
   locked = false;
+  result.classList.add("hidden");
+  resultText.textContent = "";
+
   grid.innerHTML = "";
 
-  const order = shuffle(FRONT_IMAGES);
-
-  order.forEach((src, i) => {
-    grid.appendChild(createCard(src, i));
-  });
+  const shuffled = shuffle(cardsData);
+  shuffled.forEach((c, i) => grid.appendChild(makeCard(c, i)));
 }
 
-btnReset.addEventListener("click", () => render());
+resetBtn.addEventListener("click", reset);
 
-// Первый рендер
-render();
+copyBtn.addEventListener("click", async () => {
+  const text = resultText.textContent.trim();
+  if(!text) return;
+
+  try{
+    await navigator.clipboard.writeText(text);
+    copyBtn.textContent = "Скопировано ✓";
+    setTimeout(() => copyBtn.textContent = "Скопировать текст", 1200);
+  }catch(e){
+    // запасной вариант
+    alert("Не получилось скопировать автоматически. Выделите текст и скопируйте вручную.");
+  }
+});
+
+reset();
