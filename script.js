@@ -29,37 +29,37 @@ function makeCard(cardData) {
   const inner = document.createElement("div");
   inner.className = "card-inner";
 
+  // BACK
   const back = document.createElement("div");
   back.className = "card-face card-back";
   const backImg = document.createElement("img");
   backImg.src = BACK_IMG;
   back.appendChild(backImg);
-const front = document.createElement("div");
-front.className = "card-face card-front";
 
-const frontImg = document.createElement("img");
-frontImg.src = cardData.img;
+  // FRONT
+  const front = document.createElement("div");
+  front.className = "card-face card-front";
 
-const textOverlay = document.createElement("div");
-textOverlay.className = "card-text";
-textOverlay.textContent = cardData.text;
+  const frontImg = document.createElement("img");
+  frontImg.src = cardData.img;
 
-front.appendChild(frontImg);
-front.appendChild(textOverlay);
- const text = document.createElement("div");
-text.className = "card-text";
-text.textContent = cardData.text;
+  const overlay = document.createElement("div");
+  overlay.className = "card-text";
+  overlay.textContent = cardData.text;
 
+  front.appendChild(frontImg);
+  front.appendChild(overlay);
 
-front.appendChild(text);
   inner.append(back, front);
   card.appendChild(inner);
 
   card.addEventListener("click", () => {
     if (opened) return;
     opened = true;
+
     card.classList.add("is-flipped");
     showResult(cardData.text);
+
     document.querySelectorAll(".card").forEach(c => {
       if (c !== card) c.classList.add("disabled");
     });
