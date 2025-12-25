@@ -152,44 +152,28 @@ body {
   font-size: 12px;
   opacity: .4;
 }
-/* ===== МОБИЛЬНАЯ ВЕРСИЯ ===== */
+/* ===== МОБИЛЬНАЯ ВЕРСИЯ: ТЕЛЕФОН ===== */
 @media (max-width: 600px) {
 
+  /* ОДНА КАРТА В РЯД */
   .grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 18px;
-  }
-
-  .card {
-    width: 180px;   /* было 200 на десктопе */
-    height: 280px;
-  }
-
-  .card-text {
-    font-size: 16px;
-    padding: 16px 14px 18px;
-  }
-@media (max-width: 600px) {
-  .card {
-    width: 90vw !important;
-    max-width: 320px;
-    height: 460px;
-  }/* ===== ТОЛЬКО ТЕЛЕФОН: 1 КАРТА В РЯД, КРУПНО ===== */
-@media (max-width: 600px) {
-  .grid {
-    grid-template-columns: 1fr !important;
+    grid-template-columns: 1fr;
     justify-items: center;
-    gap: 26px;
+    gap: 28px;
   }
 
+  /* КРУПНАЯ КАРТА */
   .card {
-    width: min(92vw, 360px) !important;
-    height: calc(min(92vw, 360px) * 1.5) !important; /* пропорция 2:3 */
+    width: 92vw;
+    max-width: 360px;
+    height: calc(92vw * 1.5); /* пропорция 2:3 */
+    max-height: 540px;
   }
 
+  /* ТЕКСТ ЧИТАЕМЫЙ */
   .card-text {
     max-width: 82%;
     font-size: 17px;
+    padding: 18px 16px 20px;
   }
 }
-
