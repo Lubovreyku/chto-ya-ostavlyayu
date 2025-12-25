@@ -174,5 +174,22 @@ body {
     width: 90vw !important;
     max-width: 320px;
     height: 460px;
+  }/* ===== ТОЛЬКО ТЕЛЕФОН: 1 КАРТА В РЯД, КРУПНО ===== */
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr !important;
+    justify-items: center;
+    gap: 26px;
   }
+
+  .card {
+    width: min(92vw, 360px) !important;
+    height: calc(min(92vw, 360px) * 1.5) !important; /* пропорция 2:3 */
+  }
+
+  .card-text {
+    max-width: 82%;
+    font-size: 17px;
+  }
+}
 
