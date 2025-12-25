@@ -34,18 +34,23 @@ function makeCard(cardData) {
   const backImg = document.createElement("img");
   backImg.src = BACK_IMG;
   back.appendChild(backImg);
-
-  const front = document.createElement("div");
+const front = document.createElement("div");
 front.className = "card-face card-front";
 
 const frontImg = document.createElement("img");
 frontImg.src = cardData.img;
 
-const text = document.createElement("div");
+const textOverlay = document.createElement("div");
+textOverlay.className = "card-text";
+textOverlay.textContent = cardData.text;
+
+front.appendChild(frontImg);
+front.appendChild(textOverlay);
+ const text = document.createElement("div");
 text.className = "card-text";
 text.textContent = cardData.text;
 
-front.appendChild(frontImg);
+
 front.appendChild(text);
   inner.append(back, front);
   card.appendChild(inner);
