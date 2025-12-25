@@ -121,25 +121,34 @@ body {
   position: relative;
 }
 
-.card-text {
+.card-text{
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
 
-  padding: 16px 14px 18px;
+  padding: 18px 16px 20px;
   text-align: center;
 
-  font-size: 15px;
-  line-height: 1.35;
-  color: #3a2a1a;
+  font-size: 17px;
+  line-height: 1.45;
 
+  max-width: 170px;
+  margin: 0 auto;
+
+  /* МЯГКИЙ ЦВЕТ, НЕ ЧЁРНЫЙ */
+  color: #6a4b2f;
+
+  /* ощущение света под текстом */
   background: linear-gradient(
     to top,
-    rgba(255, 245, 230, 0.95),
-    rgba(255, 245, 230, 0.7),
-    rgba(255, 245, 230, 0)
+    rgba(255,248,235,0.97),
+    rgba(255,248,235,0.75),
+    rgba(255,248,235,0)
   );
 
-  border-radius: 0 0 16px 16px;
+  border-radius: 0 0 18px 18px;
+
+  /* чуть “воздуха” */
+  letter-spacing: 0.2px;
 }
