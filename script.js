@@ -36,11 +36,17 @@ function makeCard(cardData) {
   back.appendChild(backImg);
 
   const front = document.createElement("div");
-  front.className = "card-face card-front";
-  const frontImg = document.createElement("img");
-  frontImg.src = cardData.img;
-  front.appendChild(frontImg);
+front.className = "card-face card-front";
 
+const frontImg = document.createElement("img");
+frontImg.src = cardData.img;
+
+const text = document.createElement("div");
+text.className = "card-text";
+text.textContent = cardData.text;
+
+front.appendChild(frontImg);
+front.appendChild(text);
   inner.append(back, front);
   card.appendChild(inner);
 
