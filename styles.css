@@ -1,3 +1,4 @@
+/* styles.css */
 * { box-sizing: border-box; }
 
 body {
@@ -35,10 +36,11 @@ body {
 }
 .btn:hover { opacity: .88; }
 
+/* ===== GRID ===== */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 26px;
   justify-items: center;
   align-items: start;
   margin-bottom: 40px;
@@ -46,11 +48,12 @@ body {
 
 /* ===== CARD ===== */
 .card {
-  width: 200px;      /* было 160 */
-  height: 300px;     /* было 240 */
+  width: 200px;
+  height: 300px;
   perspective: 1200px;
   cursor: pointer;
 }
+
 .card-inner {
   width: 100%;
   height: 100%;
@@ -77,11 +80,43 @@ body {
   display: block;
 }
 
-.card-front { transform: rotateY(180deg); }
+.card-front { transform: rotateY(180deg); position: relative; }
 
 .card.disabled {
   pointer-events: none;
   opacity: .5;
+}
+
+/* ===== ТЕКСТ НА КАРТОЧКЕ ===== */
+.card-text{
+  font-family: 'Playfair Display', serif;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  padding: 18px 16px 20px;
+  text-align: center;
+
+  font-size: 17px;
+  line-height: 1.45;
+
+  max-width: 175px;
+  margin: 0 auto;
+
+  color: #6a4b2f; /* тёплый, не чёрный */
+
+  background: linear-gradient(
+    to top,
+    rgba(255,248,235,0.97),
+    rgba(255,248,235,0.75),
+    rgba(255,248,235,0)
+  );
+
+  border-radius: 0 0 18px 18px;
+  letter-spacing: 0.2px;
+
+  white-space: pre-line; /* чтобы \n переносился */
 }
 
 /* ===== RESULT ===== */
@@ -98,9 +133,11 @@ body {
 .result-title { font-weight: 700; margin-bottom: 12px; }
 
 .result-text {
+  font-family: 'Playfair Display', serif;
   font-size: 22px;
   line-height: 1.4;
   white-space: pre-line;
+  color: #3f2b1a;
 }
 
 .btn-ghost {
@@ -115,41 +152,3 @@ body {
   font-size: 12px;
   opacity: .4;
 }
-/* ===== ТЕКСТ НА КАРТОЧКЕ ===== */
-
-.card-front {
-  position: relative;
-}
-
-.card-text{
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-
-  padding: 18px 16px 20px;
-  text-align: center;
-
-  font-size: 17px;
-  line-height: 1.45;
-
-  max-width: 170px;
-  margin: 0 auto;
-
-  /* МЯГКИЙ ЦВЕТ, НЕ ЧЁРНЫЙ */
-  color: #6a4b2f;
-
-  /* ощущение света под текстом */
-  background: linear-gradient(
-    to top,
-    rgba(255,248,235,0.97),
-    rgba(255,248,235,0.75),
-    rgba(255,248,235,0)
-  );
-
-  border-radius: 0 0 18px 18px;
-
-  /* чуть “воздуха” */
-  letter-spacing: 0.2px;
-}
-font-family: 'Playfair Display', serif;
