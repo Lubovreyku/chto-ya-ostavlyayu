@@ -16,10 +16,10 @@ body {
 }
 
 .hero {
-  background: #f9f4ec;
+  background: #fff4ec;
   border-radius: 18px;
   padding: 28px 32px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+  box-shadow: 0 20px 40px rgba(0,0,0,.08);
   margin-bottom: 40px;
 }
 
@@ -29,8 +29,8 @@ body {
 }
 
 .sub {
-  margin: 0 0 12px;
-  opacity: 0.8;
+  margin-bottom: 12px;
+  opacity: .8;
 }
 
 .steps {
@@ -47,9 +47,7 @@ body {
   cursor: pointer;
 }
 
-.btn:hover {
-  opacity: 0.85;
-}
+/* ===== GRID ===== */
 
 .grid {
   display: grid;
@@ -63,14 +61,9 @@ body {
 
 .card {
   width: 160px;
-  height: 260px;
+  height: 240px;
   perspective: 1000px;
   cursor: pointer;
-}
-
-.card.disabled {
-  opacity: 0.35;
-  pointer-events: none;
 }
 
 .card-inner {
@@ -78,7 +71,7 @@ body {
   height: 100%;
   position: relative;
   transform-style: preserve-3d;
-  transition: transform 0.8s;
+  transition: transform .6s;
 }
 
 .card.is-flipped .card-inner {
@@ -91,24 +84,29 @@ body {
   backface-visibility: hidden;
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+  box-shadow: 0 14px 30px rgba(0,0,0,.25);
 }
 
 .card-face img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
 .card-front {
   transform: rotateY(180deg);
 }
 
+.card.disabled {
+  pointer-events: none;
+  opacity: .5;
+}
+
 /* ===== RESULT ===== */
 
 .result {
-  display: flex;
-  justify-content: center;
+  text-align: center;
 }
 
 .result.hidden {
@@ -116,30 +114,32 @@ body {
 }
 
 .result-card {
-  max-width: 420px;
   background: #fff;
-  border-radius: 18px;
   padding: 24px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
-  text-align: center;
+  border-radius: 18px;
+  box-shadow: 0 20px 40px rgba(0,0,0,.08);
 }
 
 .result-title {
-  font-weight: 600;
+  font-weight: 700;
   margin-bottom: 12px;
 }
 
 .result-text {
-  white-space: pre-line;
-  font-size: 18px;
+  font-size: 22px;
   line-height: 1.4;
+  white-space: pre-line;
 }
 
 .btn-ghost {
   background: transparent;
-  color: #1f1f1f;
-  border: 1px solid #ccc;
-  margin-top: 16px;
+  border: 1px solid #000;
+  color: #000;
+  margin-top: 12px;
 }
 
-  
+.footer {
+  text-align: center;
+  font-size: 12px;
+  opacity: .4;
+}
