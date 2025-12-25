@@ -141,3 +141,29 @@ body {
 .card.is-flipped .card-text {
   opacity: 1;
 }
+.card-front {
+  position: relative;
+}
+
+.card-text {
+  position: absolute;
+  inset: 0;
+  padding: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  font-size: 16px;
+  line-height: 1.35;
+  color: #3a2a1a;
+
+  background: linear-gradient(
+    to top,
+    rgba(255, 245, 230, 0.92),
+    rgba(255, 245, 230, 0.75),
+    rgba(255, 245, 230, 0.35)
+  );
+
+  backdrop-filter: blur(2px);
+}
